@@ -14,7 +14,9 @@ describe 'teamcity::agent', :type => :class do
   context 'the ordering of the module should be' do
 
     let(:facts) { {
-        :osfamily  => 'Debian'
+        :osfamily => 'Debian',
+        :kernel   => 'Linux',
+        :path     => 'c:/temp',
     } }
 
     it { should compile.with_all_deps }
@@ -29,7 +31,8 @@ describe 'teamcity::agent', :type => :class do
   context 'using params defaults the install class (on ubuntu)' do
 
     let(:facts) { {
-        :osfamily  => 'Debian'
+        :osfamily => 'Debian',
+        :kernel   => 'Linux',
     } }
 
     it { should contain_class('teamcity::agent::install') }
@@ -71,7 +74,8 @@ describe 'teamcity::agent', :type => :class do
   context 'using params defaults the config class (on ubuntu)' do
 
     let(:facts) { {
-        :osfamily  => 'Debian'
+        :osfamily => 'Debian',
+        :kernel   => 'Linux',
     } }
 
     it { should contain_class('teamcity::agent::config') }
@@ -139,7 +143,8 @@ describe 'teamcity::agent', :type => :class do
   context 'using params defaults the service class (on ubuntu)' do
 
     let(:facts) { {
-        :osfamily  => 'Debian'
+        :osfamily => 'Debian',
+        :kernel   => 'Linux',
     } }
 
 

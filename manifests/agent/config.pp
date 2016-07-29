@@ -8,9 +8,9 @@ class teamcity::agent::config {
 
       exec {'Ensure buildAgent.properties exists on ubuntu':
         command => 'cp buildAgent.dist.properties buildAgent.properties',
-        onlyif => "test -e ${teamcity::agent::destination_dir}/${$teamcity::agent::agent_dir}/conf/buildAgent.properties",
+        onlyif  => "test -e ${teamcity::agent::destination_dir}/${$teamcity::agent::agent_dir}/conf/buildAgent.properties",
         cwd     => "${teamcity::agent::destination_dir}/${$teamcity::agent::agent_dir}/conf",
-        path    => "$(path}"
+        path    => $::path,
       } ->
 
       ini_setting { 'server url':
@@ -23,7 +23,7 @@ class teamcity::agent::config {
       } ->
 
       ini_setting { 'agent name':
-        ensure             => 'present',
+        ensure            => 'present',
         section           => '',
         key_val_separator => '=',
         path              => "${teamcity::agent::destination_dir}/conf/buildAgent.properties",
@@ -34,10 +34,10 @@ class teamcity::agent::config {
     'windows': {
 
       exec {'Ensure buildAgent.properties exists on windows':
-        command => 'cp buildAgent.dist.properties buildAgent.properties',
-        onlyif => "if(Test-Path ${teamcity::agent::destination_dir}/conf/buildAgent.properties) { exit 1 } else { exit 0 }",
-        cwd     => "${teamcity::agent::destination_dir}/conf",
-        provider => 'powershell'
+        command  => 'cp buildAgent.dist.properties buildAgent.properties',
+        onlyif   => "if(Test-Path ${teamcity::agent::destination_dir}/conf/buildAgent.properties) { exit 1 } else { exit 0 }",
+        cwd      => "${teamcity::agent::destination_dir}/conf",
+        provider => 'powershell',
       } ->
 
       ini_setting { 'server url':
@@ -50,7 +50,7 @@ class teamcity::agent::config {
       } ->
 
       ini_setting { 'agent name':
-        ensure             => 'present',
+        ensure            => 'present',
         section           => '',
         key_val_separator => '=',
         path              => "${teamcity::agent::destination_dir}/conf/buildAgent.properties",

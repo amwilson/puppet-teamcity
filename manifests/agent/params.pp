@@ -7,9 +7,11 @@ class teamcity::agent::params {
   case downcase($::osfamily) {
     'debian': {
       $destination_dir = '/var/tainted'
+      $temp_dir = '/tmp'
     }
     'windows': {
       $destination_dir = 'c:/buildAgent'
+      $temp_dir = 'c:/temp'
     }
     default: {
       fail('Operating system not supported for this module')

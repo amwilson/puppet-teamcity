@@ -1,7 +1,7 @@
 fixtures:
   repositories:
     stdlib: git://github.com/puppetlabs/puppetlabs-stdlib.git
-    download_file: git://github.com/opentable/puppet-download_file.git
+    download_file: git://github.com/voxpupuli/puppet-download_file.git
     wget: git://github.com/maestrodev/puppet-wget.git
     inifile: git://github.com/puppetlabs/puppetlabs-inifile.git
   symlinks:

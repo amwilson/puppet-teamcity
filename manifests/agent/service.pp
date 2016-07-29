@@ -12,7 +12,7 @@ $teamcity_agent_mem_opts = $teamcity::agent::teamcity_agent_mem_opts
         owner   => "root",
         group   => "root",
         mode    => 755,
-        content => template("teamcity/build-agent.erb")
+        content => template("teamcity/build-agent.erb"),
       }->
 
       file { "/etc/profile.d/${teamcity::agent::priority}-teamcity.sh":
@@ -36,15 +36,15 @@ $teamcity_agent_mem_opts = $teamcity::agent::teamcity_agent_mem_opts
       }->
 
       service { "build-agent":
-        ensure => running,
-        enable => true,
-        hasstatus => false
+        ensure    => running,
+        enable    => true,
+        hasstatus => false,
       }
     }
     'windows': {
       service { "TCBuildAgent":
         ensure => running,
-        enable => true
+        enable => true,
       }
     }
   }
